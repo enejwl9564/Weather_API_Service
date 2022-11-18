@@ -21,6 +21,7 @@ public class TUIView {
 	TUIView() {
 		mainview();
 	}
+
 	void mainview() {
 		while (true) {
 			System.out.println("-----------------M A I N---------------");
@@ -42,14 +43,14 @@ public class TUIView {
 				
 				break;
 			case 3:
-//				if(!Loginstate) {
-//					loginview();
-//				}else {
+				if(!Loginstate) {
+					loginview();
+				}else {
 					List<BoardDTO> list =(List<BoardDTO>) controller.ExSubController("/board", 5, null);
 					for(BoardDTO dto : list) {
 						System.out.println("[VIEW] " + dto);
 					}
-//				}
+				}
 				break;
 			case 4:
 				if(!Loginstate) {
@@ -66,8 +67,6 @@ public class TUIView {
 						
 						String msg=(String)controller.ExSubController("/board", 1, dto);
 						System.out.println("[VIEW] "+msg);
-					}else {
-						System.out.println("[VIEW-INFO] 권한이 필요합니다.");
 					}
 				}		
 				break;

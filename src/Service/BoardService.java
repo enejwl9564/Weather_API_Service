@@ -18,7 +18,7 @@ public class BoardService {
 		return instance;
 	}
 
-	private BoardService() {}
+	public BoardService() {}
 	
 public boolean RegisterBoard(BoardDTO dto,int permission) {
 		

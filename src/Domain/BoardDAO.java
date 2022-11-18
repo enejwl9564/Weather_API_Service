@@ -12,7 +12,8 @@ public class BoardDAO extends DAO{
 				instance = new BoardDAO();
 			return instance;
 		}
-	
+		
+		
 	// 등록하기
 		public int Insert(BoardDTO dto) {
 			
@@ -24,9 +25,9 @@ public class BoardDAO extends DAO{
 			// pstmt
 			int result = 0;
 			try {
-				pstmt = conn.prepareStatement("insert into tbl_Board values(1,2,?,?,?)");
-//				pstmt.setString(1, dto.getMemid());
-//				pstmt.setString(2, dto.getBdate());
+				pstmt = conn.prepareStatement("insert into tbl_Board values(?,?,?,?,?)");
+				pstmt.setString(1, dto.getMemid());
+				pstmt.setString(2, dto.getBdate());
 				pstmt.setString(1, dto.getTitle());
 				pstmt.setString(2, dto.getCategori());
 				pstmt.setString(3, dto.getConstens());
@@ -63,7 +64,7 @@ public class BoardDAO extends DAO{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				try{rs.close();}catch(Exception e) {e.printStackTrace();}
 				try{pstmt.close();}catch(Exception e) {e.printStackTrace();}
 			}

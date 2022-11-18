@@ -6,17 +6,17 @@ import Service.BoardService;
 
 public class BoardController implements SubController {
 	
-	BoardService service = BoardService.getInstance();
+	BoardService service = new BoardService();
 
 	@Override
 	public Object excute(int SN, DTO dto) {
-		Object r = null;
-		Object obj=null;
-		boolean flag=false;
+		Object obj = null;
+		boolean flag = false;
 		switch(SN) {
 		case 1:	//등록
-//			BoardDTO down = (BoardDTO)dto;
-//			flag= service.RegisterBoard(down, 3);
+//			System.out.println("도서등록 서비스 요청");
+			BoardDTO down = (BoardDTO)dto;
+			flag= service.RegisterBoard(down, 3);
 			System.out.println("[System] 게시글 등록 성공 여부 : " + flag);
 			if(flag) {
 				obj="게시글 등록이 완료되었습니다.";
@@ -41,7 +41,7 @@ public class BoardController implements SubController {
 		}
 		
 		
-		return null;
+		return obj;
 	}
 
 }

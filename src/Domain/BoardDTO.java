@@ -8,6 +8,9 @@ public class BoardDTO extends DTO{
 	private String Categori;
 	private String Constens;
 	private int Bnum;
+	private boolean isLend;
+	
+	public BoardDTO(){}
 
 	public BoardDTO(int Bnum, String Title, String Categori) {
 		super();
@@ -15,12 +18,15 @@ public class BoardDTO extends DTO{
 		this.Categori = Categori;
 		this.memid = memid;
 		this.Bnum = Bnum;
+		this.isLend = true;
 	}
+	
 	public BoardDTO(String Title, String Categori, String Constens) {
 		super();
 		this.Title = Title;
 		this.Categori = Categori;
 		this.Constens = Constens;
+		this.isLend = true;
 	}
 
 	public BoardDTO(int Bum, String Title, String Categori, String memid, String constens) {
@@ -30,6 +36,7 @@ public class BoardDTO extends DTO{
 		this.memid = memid;
 		this.Bnum = Bnum;
 		this.Constens = Constens;
+		this.isLend = true;
 	}
 
 	public BoardDTO(String memid, String bdate, String title, String categori, String constens, int bnum) {
@@ -54,12 +61,6 @@ public class BoardDTO extends DTO{
 
 	public void setBnum(int bnum) {
 		Bnum = bnum;
-	}
-
-
-
-	public BoardDTO() {
-		super();
 	}
 
 	public String getMemid() {
