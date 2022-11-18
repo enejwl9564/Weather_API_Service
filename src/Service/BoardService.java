@@ -8,6 +8,7 @@ import Domain.BoardDTO;
 public class BoardService {
 	
 	BoardDAO dao = BoardDAO.getInstance();
+	BoardDTO dto = new BoardDTO();
 	
 	// 싱글톤 패턴 코드 추가
 	private static BoardService instance;
@@ -25,13 +26,13 @@ public boolean RegisterBoard(BoardDTO dto,int permission) {
 		boolean isRegisterOK=true;
 		
 		//권한 체크(등록가능한지여부)	
-		if(permission>=3) {
-			
-			int result = dao.Insert(dto);
-			if(result>0) {
-				return true;
-			}
-		}
+//		if(permission>=3) {
+//			
+//			int result = dao.Insert(dto);
+//			if(result>0) {
+//				return true;
+//			}
+//		}
 		
 		return false;
 	}
@@ -39,5 +40,14 @@ public boolean RegisterBoard(BoardDTO dto,int permission) {
 		return dao.SelectAll();
 	}
 	
-	
+	public int insertBoard(BoardDTO dto) {
+		BoardDTO down = (BoardDTO)dto;
+		return dao.InsertBoard(down);
+		
+	}
+//	public int InsertBoard(BoardDTO dto) {
+//		int result = dao.InsertBoard(dto);
+//		return result;
+//	}
+//	
 }

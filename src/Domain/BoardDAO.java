@@ -15,24 +15,18 @@ public class BoardDAO extends DAO{
 		
 		
 	// 등록하기
-		public int Insert(BoardDTO dto) {
+		public int InsertBoard(BoardDTO dto) {
 			
-//			private String memid;
-//			private Date Bdate;
-//			private String Title;
-//			private String Categori;
-//			private String Constens;
 			// pstmt
 			int result = 0;
 			try {
 				pstmt = conn.prepareStatement("insert into tbl_Board values(?,?,?,?,?)");
 				pstmt.setString(1, dto.getMemid());
 				pstmt.setString(2, dto.getBdate());
-				pstmt.setString(1, dto.getTitle());
-				pstmt.setString(2, dto.getCategori());
-				pstmt.setString(3, dto.getConstens());
+				pstmt.setString(3, dto.getTitle());
+				pstmt.setString(4, dto.getCategori());
+				pstmt.setString(5, dto.getConstens());
 				result = pstmt.executeUpdate();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
@@ -40,6 +34,9 @@ public class BoardDAO extends DAO{
 			}
 			return result;
 		}
+		
+		//삭제하기
+		
 		
 		//전체 조회하기
 		public ArrayList<BoardDTO> SelectAll() {

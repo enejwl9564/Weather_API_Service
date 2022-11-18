@@ -6,6 +6,7 @@ import java.util.Scanner;
 import Controller.FrontController;
 import Domain.BoardDTO;
 import Domain.MemberDTO;
+import Service.BoardService;
 
 public class TUIView {
 	// 멤버
@@ -56,18 +57,28 @@ public class TUIView {
 				if(!Loginstate) {
 					loginview();
 				}else {
-					if(perm>0) {
+						System.out.print("작성자를 입력 : " );
+						String memid = sc.next();
+						System.out.print("작성일자를 입력 : " );
+						String Bdate = sc.next();
 						System.out.print("제목를 입력 : " );
 						String Title = sc.next();
 						System.out.print("카테고리를 입력 : " );
 						String Categori = sc.next();
 						System.out.print("내용를 입력 : " );
 						String Constens = sc.next();
-						BoardDTO dto = new BoardDTO();
 						
-						String msg=(String)controller.ExSubController("/board", 1, dto);
-						System.out.println("[VIEW] "+msg);
-					}
+						BoardDTO dto = new BoardDTO(memid, Bdate, Title, Categori, Constens);
+//						dto.setTitle(Title);
+//						dto.setCategori(Categori);
+//						dto.setConstens(Constens);
+//						dto.setBdate(Bdate);
+//						dto.setMemid(memid);
+						
+						int result = BoardService.insertBoard(dto);
+						
+//						String msg = (String)controller.ExSubController("/board", 1, dto);
+//						System.out.println("[VIEW] "+msg);
 				}		
 				break;
 			case 5:

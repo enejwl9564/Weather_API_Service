@@ -29,24 +29,22 @@ public class BoardDTO extends DTO{
 		this.isLend = true;
 	}
 
-	public BoardDTO(int Bum, String Title, String Categori, String memid, String constens) {
+	public BoardDTO(String Title, String Categori, String memid, String Constens) {
 		super();
 		this.Title = Title;
 		this.Categori = Categori;
 		this.memid = memid;
-		this.Bnum = Bnum;
 		this.Constens = Constens;
 		this.isLend = true;
 	}
 
-	public BoardDTO(String memid, String bdate, String title, String categori, String constens, int bnum) {
+	public BoardDTO(String memid, String bdate, String title, String categori, String constens) {
 		super();
 		this.memid = memid;
-		Bdate = bdate;
-		Title = title;
-		Categori = categori;
-		Constens = constens;
-		Bnum = bnum;
+		this.Bdate = bdate;
+		this.Title = title;
+		this.Categori = categori;
+		this.Constens = constens;
 	}
 
 
