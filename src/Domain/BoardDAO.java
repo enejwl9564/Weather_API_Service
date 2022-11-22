@@ -20,12 +20,11 @@ public class BoardDAO extends DAO{
 			// pstmt
 			int result = 0;
 			try {
-				pstmt = conn.prepareStatement("insert into tbl_Board values(?,?,?,?,?)");
+				pstmt = conn.prepareStatement("insert into tbl_Board values(?,?,?,?)");
 				pstmt.setString(1, dto.getMemid());
-				pstmt.setString(2, dto.getBdate());
-				pstmt.setString(3, dto.getTitle());
-				pstmt.setString(4, dto.getCategori());
-				pstmt.setString(5, dto.getConstens());
+				pstmt.setString(2, dto.getTitle());
+				pstmt.setString(3, dto.getCategori());
+				pstmt.setString(4, dto.getConstens());
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();

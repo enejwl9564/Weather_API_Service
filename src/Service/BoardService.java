@@ -7,7 +7,7 @@ import Domain.BoardDTO;
 
 public class BoardService {
 	
-	BoardDAO dao = BoardDAO.getInstance();
+	static BoardDAO dao = BoardDAO.getInstance();
 	BoardDTO dto = new BoardDTO();
 	
 	// 싱글톤 패턴 코드 추가
@@ -40,7 +40,7 @@ public boolean RegisterBoard(BoardDTO dto,int permission) {
 		return dao.SelectAll();
 	}
 	
-	public int insertBoard(BoardDTO dto) {
+	public static int insertBoard(BoardDTO dto) {
 		BoardDTO down = (BoardDTO)dto;
 		return dao.InsertBoard(down);
 		

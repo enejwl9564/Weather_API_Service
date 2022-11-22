@@ -21,7 +21,7 @@ public class FrontController {
 		map.put("/member", new MemberController());
 		map.put("/board",new BoardController());
 		map.put("/auth", new AuthController());
-		map.put("/api", new ApiService());
+//		map.put("/api", new ApiService());
 	}
 	
 	//사용자로부터 요청서비스명,서비스번호(SN)를 받아 요청처리 Controller를 실행

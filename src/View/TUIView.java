@@ -54,33 +54,23 @@ public class TUIView {
 				}
 				break;
 			case 4:
-				if(!Loginstate) {
-					loginview();
-				}else {
-						System.out.print("작성자를 입력 : " );
-						String memid = sc.next();
-						System.out.print("작성일자를 입력 : " );
-						String Bdate = sc.next();
-						System.out.print("제목를 입력 : " );
-						String Title = sc.next();
-						System.out.print("카테고리를 입력 : " );
-						String Categori = sc.next();
-						System.out.print("내용를 입력 : " );
-						String Constens = sc.next();
-						
-						BoardDTO dto = new BoardDTO(memid, Bdate, Title, Categori, Constens);
-//						dto.setTitle(Title);
-//						dto.setCategori(Categori);
-//						dto.setConstens(Constens);
-//						dto.setBdate(Bdate);
-//						dto.setMemid(memid);
-						
-						int result = BoardService.insertBoard(dto);
-						
-//						String msg = (String)controller.ExSubController("/board", 1, dto);
-//						System.out.println("[VIEW] "+msg);
-				}		
-				break;
+	            if(!Loginstate) {
+	               loginview();
+	            }else {
+	                  System.out.print("작성자를 입력 : " );
+	                  String memid = sc.next();
+	                  System.out.print("제목를 입력 : " );
+	                  String Title = sc.next();
+	                  System.out.print("카테고리를 입력 : " );
+	                  String Categori = sc.next();
+	                  System.out.print("내용를 입력 : " );
+	                  String Constens = sc.next();
+	                  
+	                  BoardDTO dto = new BoardDTO(Title, Categori, memid, Constens);	                  
+	                  int result = BoardService.insertBoard(dto);
+	                  
+	            }      
+	            break;
 			case 5:
 				
 				break;

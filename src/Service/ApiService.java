@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import Controller.SubController;
 
-
-public class ApiService {
+public class ApiService{
 	
 				
 		try {
@@ -59,3 +57,4 @@ public class ApiService {
 			System.out.println(e.getMessage());
 		}
 }
+
