@@ -6,6 +6,7 @@ import java.util.Scanner;
 import Controller.FrontController;
 import Domain.BoardDTO;
 import Domain.MemberDTO;
+import Service.ApiService;
 import Service.BoardService;
 
 public class TUIView {
@@ -15,6 +16,7 @@ public class TUIView {
 	private Integer perm = 0; // 0 비회원 , 1 회원 2 관리자(사서)
 
 	private FrontController controller = new FrontController();
+	private ApiService api = new ApiService();
 
 	Scanner sc = new Scanner(System.in);
 	int n = 0;
@@ -38,7 +40,14 @@ public class TUIView {
 			n = sc.nextInt();
 			switch (n) {
 			case 1:
-				
+				String waether;
+				try {
+					waether = api.Waether();
+					System.out.println(waether);					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
 				break;
 			case 2:
 				
@@ -103,11 +112,7 @@ public class TUIView {
 			System.out.println("[VIEW-ERROR] 로그인 실패!");
 		}
 	}
-
-	void lendview() {
-
-	}
-
+	
 	public static void main(String[] args) {
 			new TUIView();
 	}
