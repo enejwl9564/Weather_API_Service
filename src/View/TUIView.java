@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import Controller.FrontController;
+import Domain.ApiDTO;
 import Domain.BoardDTO;
 import Domain.MemberDTO;
 import Service.ApiService;
-import Service.BoardService;
 
 public class TUIView {
 	// 멤버
@@ -23,11 +23,11 @@ public class TUIView {
 	Scanner sc = new Scanner(System.in);
 	int n = 0;
 
-	TUIView() {
+	TUIView() throws Exception {
 		mainview();
 	}
 
-	void mainview() {
+	void mainview() throws Exception {
 		while (true) {
 			System.out.println("-----------------M A I N---------------");
 			System.out.println("1 날씨 조회");
@@ -42,14 +42,27 @@ public class TUIView {
 			n = sc.nextInt();
 			switch (n) {
 			case 1:
-				String waether;
-				try {
-					waether = api.Waether();
-					System.out.println(waether);					
-				} catch (Exception e) {
-					e.printStackTrace();
+				ApiDTO Adto = new ApiDTO();
+				System.out.println("지명을 입력하세요");
+				String area = sc.next();
+				
+				switch(area) {
+				case "대구":
+					Adto.setLon("128.593737");
+					Adto.setLat("35.865737");
+					controller.ExSubController("/api", 1, Adto);
+					break;
+				case "서울":
+					Adto.setLon("128.593737");
+					Adto.setLat("35.865737");
+					controller.ExSubController("/api", 1, Adto);
+					break;
+				default:
+					System.out.println("잘못입력");
+					break;
 				}
-					
+				
+				
 				break;
 			case 2:
 				
@@ -117,7 +130,7 @@ public class TUIView {
 		} // while끝
 	} // mainview 끝
 
-	void loginview() {
+	void loginview() throws Exception {
 		System.out.println("----------------- L O G I N ---------------");
 		System.out.print("ID/PW 입력 : ");
 		String id=sc.next();
@@ -133,7 +146,7 @@ public class TUIView {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 			new TUIView();
 	}
 }

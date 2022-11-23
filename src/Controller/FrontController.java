@@ -21,11 +21,11 @@ public class FrontController {
 		map.put("/member", new MemberController());
 		map.put("/board",new BoardController());
 		map.put("/auth", new AuthController());
-//		map.put("/api", new ApiController());
+		map.put("/api", new ApiController());
 	}
 	
 	//사용자로부터 요청서비스명,서비스번호(SN)를 받아 요청처리 Controller를 실행
-	public Object ExSubController(String menu,int SN,DTO dto) {
+	public Object ExSubController(String menu,int SN,DTO dto) throws Exception {
 		
 		//서비스 선별
 		SubController sub =  map.get(menu);	

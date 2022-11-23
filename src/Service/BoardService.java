@@ -41,8 +41,8 @@ public boolean RegisterBoard(BoardDTO dto,int permission) {
 	}
 	
 	public static int insertBoard(BoardDTO dto) {
-		BoardDTO down = (BoardDTO)dto;
-		return dao.InsertBoard(down);
+//		BoardDTO down = (BoardDTO)dto;
+		return dao.InsertBoard(dto);
 		
 	}
 //	public int InsertBoard(BoardDTO dto) {

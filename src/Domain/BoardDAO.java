@@ -20,7 +20,7 @@ public class BoardDAO extends DAO{
 			// pstmt
 			int result = 0;
 			try {
-				pstmt = conn.prepareStatement("insert into tbl_Board2 values(0,?,?,?,?,?)");
+				pstmt = conn.prepareStatement("insert into tbl_Board values(boardID_board.NEXTVAL,?,?,?,?,?)");
 				pstmt.setString(1, dto.getBdate());
 				pstmt.setString(2, dto.getTitle());
 				pstmt.setString(3, dto.getCategori());

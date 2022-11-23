@@ -1,45 +1,46 @@
 package Service;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
+import Domain.ApiDTO;
 
 
 
 
 public class ApiService{
 	
-	public String Waether() throws Exception {
+	public ApiService() {}
+	
+	public String Waether(ApiDTO dto) throws Exception {
 		
-		// 서울시청의 위도와 경도
-		String lon = "128.593737"; // 경도
-		String lat = "35.865737"; // 위도
-
+		// 대구의 위도와 경도
 		// OpenAPI call하는 URL
-		String urlstr = "http://api.openweathermap.org/data/2.5/weather?" + "lat=" + lat + "&lon=" + lon
-				+ "&appid=e1bf463abd438a1e860c87dd920d3085";
+		String urlstr = "http://api.openweathermap.org/data/2.5/weather?lat="+dto.getLat()+"&lon="+dto.getLon()+"&appid=e1bf463abd438a1e860c87dd920d3085";
+		
 		URL url = new URL(urlstr);
 		BufferedReader bf;
 		String line;
-		String result = "";
+		StringBuffer result = new StringBuffer();
 
 		// 날씨 정보를 받아온다.
 		bf = new BufferedReader(new InputStreamReader(url.openStream()));
 
 		// 버퍼에 있는 정보를 문자열로 변환.
 		while ((line = bf.readLine()) != null) {
-			result = result.concat(line);
+			result = result.append(line);
 			// System.out.println(line);
 		}
-
+		
 		// 문자열을 JSON으로 파싱
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObj = (JSONObject) jsonParser.parse(result);
+		JSONObject jsonObj = (JSONObject) jsonParser.parse(result.toString());
 
 		// 지역 출력
 		System.out.println("지역 : " + jsonObj.get("name"));
@@ -56,7 +57,7 @@ public class ApiService{
 		System.out.printf("온도 : %.2f\n", temp);
 
 		bf.close();
-		return result;
+		return result.toString();
 	}
 
 }
