@@ -20,11 +20,12 @@ public class BoardDAO extends DAO{
 			// pstmt
 			int result = 0;
 			try {
-				pstmt = conn.prepareStatement("insert into tbl_Board values(?,?,?,?)");
-				pstmt.setString(1, dto.getMemid());
+				pstmt = conn.prepareStatement("insert into tbl_Board2 values(0,?,?,?,?,?)");
+				pstmt.setString(1, dto.getBdate());
 				pstmt.setString(2, dto.getTitle());
 				pstmt.setString(3, dto.getCategori());
 				pstmt.setString(4, dto.getConstens());
+				pstmt.setString(5, dto.getMemid());
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -50,10 +51,11 @@ public class BoardDAO extends DAO{
 				if (rs != null) {
 					while (rs.next()) {
 						dto = new BoardDTO();
-						dto.setTitle(rs.getString("Title"));
+						dto.setTitle(rs.getString("BoardId"));
 						dto.setBdate(rs.getString("BDate"));
-						dto.setCategori(rs.getString("Categori"));
-						dto.setConstens(rs.getString("Constens"));
+						dto.setTitle(rs.getString("BTitle"));						
+						dto.setCategori(rs.getString("BCategori"));
+						dto.setConstens(rs.getString("BConstens"));
 						dto.setMemid(rs.getString("Memid"));
 						list.add(dto);
 					}

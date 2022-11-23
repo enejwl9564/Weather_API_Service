@@ -2,23 +2,41 @@ package Domain;
 
 public class BoardDTO extends DTO{
 	
+	private String Boardid;
 	private String memid;
 	private String Bdate;
 	private String Title;
 	private String Categori;
 	private String Constens;
-	private int Bnum;
-	private boolean isLend;
 	
 	public BoardDTO(){}
+
+	
+	public String getBoardid() {
+		return Boardid;
+	}
+
+	public void setBoardid(String boardid) {
+		Boardid = boardid;
+	}
+
+	
+	public BoardDTO(String boardid, String memid, String bdate, String title, String categori, String constens) {
+		super();
+		Boardid = boardid;
+		this.memid = memid;
+		Bdate = bdate;
+		Title = title;
+		Categori = categori;
+		Constens = constens;
+	}
+
 
 	public BoardDTO(int Bnum, String Title, String Categori) {
 		super();
 		this.Title = Title;
 		this.Categori = Categori;
 		this.memid = memid;
-		this.Bnum = Bnum;
-		this.isLend = true;
 	}
 	
 	public BoardDTO(String Title, String Categori, String Constens) {
@@ -26,7 +44,6 @@ public class BoardDTO extends DTO{
 		this.Title = Title;
 		this.Categori = Categori;
 		this.Constens = Constens;
-		this.isLend = true;
 	}
 
 	public BoardDTO(String Title, String Categori, String memid, String Constens) {
@@ -35,7 +52,6 @@ public class BoardDTO extends DTO{
 		this.Categori = Categori;
 		this.memid = memid;
 		this.Constens = Constens;
-		this.isLend = true;
 	}
 
 	public BoardDTO(String memid, String bdate, String title, String categori, String constens) {
@@ -45,20 +61,6 @@ public class BoardDTO extends DTO{
 		this.Title = title;
 		this.Categori = categori;
 		this.Constens = constens;
-	}
-
-
-
-
-
-	public int getBnum() {
-		return Bnum;
-	}
-
-
-
-	public void setBnum(int bnum) {
-		Bnum = bnum;
 	}
 
 	public String getMemid() {

@@ -1,5 +1,7 @@
 package View;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -66,17 +68,35 @@ public class TUIView {
 	            if(!Loginstate) {
 	               loginview();
 	            }else {
+	            	BoardDTO dto1 = new BoardDTO();
+	            	
 	                  System.out.print("작성자를 입력 : " );
 	                  String memid = sc.next();
+	                  dto1.setMemid(memid);
 	                  System.out.print("제목를 입력 : " );
 	                  String Title = sc.next();
+	                  dto1.setTitle(Title);
 	                  System.out.print("카테고리를 입력 : " );
 	                  String Categori = sc.next();
+	                  dto1.setCategori(Categori);
 	                  System.out.print("내용를 입력 : " );
 	                  String Constens = sc.next();
+	                  dto1.setConstens(Constens);
 	                  
-	                  BoardDTO dto = new BoardDTO(Title, Categori, memid, Constens);	                  
-	                  int result = BoardService.insertBoard(dto);
+	                //DataFormat지정 객체
+	  				SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+	  				//날짜정보객체
+	  				Calendar cal = Calendar.getInstance();
+	  				//현재 날짜정보를 문자열로 저장 start
+	  				String start = fmt.format(cal.getTime()).toString();
+	  				dto1.setBdate(start);
+	  				
+	  				controller.ExSubController("/board", 1, dto1);
+	                  
+	                  
+	                  
+//	                  BoardDTO dto = new BoardDTO(Title, Categori, memid, Constens);	                  
+//	                  int result = BoardService.insertBoard(dto);
 	                  
 	            }      
 	            break;

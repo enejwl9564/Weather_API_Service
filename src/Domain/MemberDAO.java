@@ -41,7 +41,7 @@ public class MemberDAO extends DAO {
 					dto.setMemId(rs.getString("memId"));
 					dto.setPwd(rs.getString("pwd"));
 					dto.setName(rs.getString("name"));
-					dto.setRole(rs.getInt("role"));
+					dto.setRole(rs.getInt("mrole"));
 				}		
 			}
 		} catch (Exception e) {
