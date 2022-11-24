@@ -1,5 +1,6 @@
 package Service;
 
+import Domain.DTO;
 import Domain.MemberDAO;
 import Domain.MemberDTO;
 
@@ -15,11 +16,21 @@ public class MemberService {
 			instance = new MemberService();
 		return instance;
 	}
-
-	private MemberService() {
+	
+	public MemberService() {}
+	
+	public int insertMember(MemberDTO dto) {
+		return dao.Insert(dto);
+	}
+	
+	public String selectMember(String id) {
+		MemberDTO dto = null;
+		dto = dao.Select(id);
+		
+		return dto.getMemId();
 	}
 
-	
+
 	// 멤버 등록하기
 	public boolean RegisterMember(MemberDTO dto) {	
 			int result = dao.Insert(dto);

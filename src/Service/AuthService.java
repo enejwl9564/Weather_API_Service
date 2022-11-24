@@ -31,7 +31,7 @@ public class AuthService {
 		//ID 일치 PW일치여부 확인 
 		if(id.equals(dto.getMemId())&&pwd.equals(dto.getPwd()))
 		{
-			return dto.getRole();
+			return dto.getMrole();
 		}
 		//role반환(1 or 2 or Null)
 		return null;

@@ -25,7 +25,8 @@ public class BoardController implements SubController {
 			System.out.println("구현 중입니다.");
 			break;
 		case 3:	//수정
-			System.out.println("구현 중입니다.");
+			BoardDTO down2 = (BoardDTO)dto;
+			obj = service.deletBoard(down2);
 			break;
 		case 4:	//조회
 			System.out.println("구현 중입니다.");

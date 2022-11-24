@@ -4,22 +4,23 @@ public class MemberDTO extends DTO {
 	private String memId;
 	private String pwd;
 	private String name;
-	private int role;	//1 회원 , 2 관리자
+	private int mrole;	//1 회원 , 2 관리자
 	
 	
 	
+	public int getMrole() {
+		return mrole;
+	}
+	public void setMrole(int mrole) {
+		this.mrole = mrole;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getRole() {
-		return role;
-	}
-	public void setRole(int role) {
-		this.role = role;
-	}
+
 	public String getMemId() {
 		return memId;
 	}
@@ -34,22 +35,33 @@ public class MemberDTO extends DTO {
 	}
 	
 	
+
 	@Override
 	public String toString() {
-		return "MemberDTO [memId=" + memId + ", pwd=" + pwd + ", name=" + name + ", role=" + role + "]";
+		return "MemberDTO [memId=" + memId + ", pwd=" + pwd + ", name=" + name + ", mrole=" + mrole + "]";
+	}
+	public MemberDTO(String memId) {
+		super();
+		this.memId = memId;
 	}
 	
 	public MemberDTO(String memId, String pwd) {
 		super();
 		this.memId = memId;
 		this.pwd = pwd;
-		this.role = 0;
+		this.mrole = 0;
 	}
 	public MemberDTO(String memId, String pwd, int role) {
 		super();
 		this.memId = memId;
 		this.pwd = pwd;
-		this.role = role;
+		this.mrole = role;
+	}
+	public MemberDTO(String memId, String pwd, String name) {
+		super();
+		this.memId = memId;
+		this.pwd = pwd;
+		this.name = name;
 	}
 	
 	public MemberDTO(String memId, String pwd, String name, int role) {
@@ -57,7 +69,7 @@ public class MemberDTO extends DTO {
 		this.memId = memId;
 		this.pwd = pwd;
 		this.name = name;
-		this.role = role;
+		this.mrole = role;
 	}
 	public MemberDTO() {}
 	//Getter and Setter

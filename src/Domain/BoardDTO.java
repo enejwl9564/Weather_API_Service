@@ -52,16 +52,17 @@ public class BoardDTO extends DTO{
 		this.Categori = Categori;
 		this.memid = memid;
 		this.Constens = Constens;
+	}	
+
+	public BoardDTO(String boardid, String bdate, String title, String categori, String constens) {
+		super();
+		Boardid = boardid;
+		Bdate = bdate;
+		Title = title;
+		Categori = categori;
+		Constens = constens;
 	}
 
-	public BoardDTO(String memid, String bdate, String title, String categori, String constens) {
-		super();
-		this.memid = memid;
-		this.Bdate = bdate;
-		this.Title = title;
-		this.Categori = categori;
-		this.Constens = constens;
-	}
 
 	public String getMemid() {
 		return memid;
@@ -93,12 +94,15 @@ public class BoardDTO extends DTO{
 	public void setConstens(String constens) {
 		Constens = constens;
 	}
-	
+
+
 	@Override
 	public String toString() {
-		return "BoardDTO [memid=" + memid + ", Bdate=" + Bdate + ", Title=" + Title + ", Categori=" + Categori
-				+ ", Constens=" + Constens + "]";
+		return "BoardDTO [Boardid=" + Boardid + ", memid=" + memid + ", Bdate=" + Bdate + ", Title=" + Title
+				+ ", Categori=" + Categori + ", Constens=" + Constens + "]";
 	}
+	
+	
 	
 	
 	

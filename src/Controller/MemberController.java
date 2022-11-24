@@ -1,18 +1,27 @@
 package Controller;
 
 import Domain.DTO;
+import Domain.MemberDTO;
+import Service.MemberService;
 
 public class MemberController implements SubController{
+	
+	MemberService service = new MemberService();
 
 	@Override
 	public Object excute(int SN ,DTO dto) {
+		Object obj = null;
+		
 		switch(SN)
 		{
 		case 1:	//회원 등록
-			System.out.println("회원등록 서비스 요청");
+			MemberDTO down =(MemberDTO)dto;
+			obj = service.insertMember(down);
 			break;
 		case 2:	//회원 조회
-			System.out.println("회원조회 서비스 요청");
+			MemberDTO down1 = (MemberDTO)dto;
+			String id = down1.getMemId();
+			obj = service.selectMember(id);
 			break;
 		case 3:	//회원 수정
 			System.out.println("회원수정 서비스 요청");

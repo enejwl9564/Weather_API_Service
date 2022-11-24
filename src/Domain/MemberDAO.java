@@ -15,13 +15,15 @@ public class MemberDAO extends DAO {
 
 		int result=0;
 		try {
-			pstmt = conn.prepareStatement("insert into tbl_member values(?,?,?)");
+			pstmt = conn.prepareStatement("insert into tbl_member values(?,?,?,1)");
 			pstmt.setString(1, dto.getMemId());
 			pstmt.setString(2, dto.getPwd());
 			pstmt.setString(3, dto.getName());
 			result = pstmt.executeUpdate();
+			System.out.println("회원 가입 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("비밀번호를 다시 입력하세요");
 		}
 		return result;
 	}
@@ -41,7 +43,7 @@ public class MemberDAO extends DAO {
 					dto.setMemId(rs.getString("memId"));
 					dto.setPwd(rs.getString("pwd"));
 					dto.setName(rs.getString("name"));
-					dto.setRole(rs.getInt("mrole"));
+					dto.setMrole(rs.getInt("mrole"));
 				}		
 			}
 		} catch (Exception e) {

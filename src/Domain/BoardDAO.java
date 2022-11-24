@@ -35,7 +35,26 @@ public class BoardDAO extends DAO{
 			return result;
 		}
 		
-		//삭제하기
+		//수정하기
+		public int DeletBoard(BoardDTO dto) {
+			
+			int result = 0;
+			try {
+				pstmt = conn.prepareStatement("UPDATE TBL_BOARD SET BDATE=?, BTITLE=?, BCATEGORI=?, BCONSTENS=?  WHERE BOARDID=?;");
+				pstmt.setString(1, dto.getBdate());
+				pstmt.setString(2, dto.getTitle());
+				pstmt.setString(3, dto.getCategori());
+				pstmt.setString(4, dto.getConstens());
+				pstmt.setString(5, dto.getBoardid());
+				result = pstmt.executeUpdate();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try{pstmt.close();}catch(Exception e) {e.printStackTrace();}
+			}
+			
+			return result;
+		}
 		
 		
 		//전체 조회하기
